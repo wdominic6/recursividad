@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+bool CaracteresDistintos(const string& cadena, int index = 0) {
+    // Caso base: si hemos recorrido toda la cadena, no hay repetidos
+    if (index >= cadena.size() - 1) {
+        return true;
+    }
+    // Verificar si el carácter actual aparece en el resto de la cadena
+    for (int j = index + 1; j < cadena.size(); ++j) {
+        if (cadena[index] == cadena[j]) {
+            return false;
+        }
+    }
+    // Llamar recursivamente con el siguiente índice
+    return CaracteresDistintos(cadena, index + 1);
+}
+
+int main() {
+    string cadena1 ;
+    string cadena2 ;
+
+    cin >> cadena1;
+    cin >> cadena2;
+
+    cout << "¿Son todos los caracteres distintos en \"" << cadena1 << "\"? "
+              << (CaracteresDistintos(cadena1) ? "Sí" : "No") << endl;
+
+    cout << "¿Son todos los caracteres distintos en \"" << cadena2 << "\"? "
+              << (CaracteresDistintos(cadena2) ? "Sí" : "No") << endl;
+
+    return 0;
+}
